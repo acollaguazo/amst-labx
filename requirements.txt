@@ -21,7 +21,6 @@ PyJWT==1.7.1
 pylint==2.6.0
 PyQt5==5.9
 PyQt5-sip==12.7.0
-pyqt5-tools==5.13.0.1.5
 PyQt5Designer==5.13.1
 python-dotenv==0.10.3
 pytz==2020.1
