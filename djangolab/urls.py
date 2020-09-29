@@ -20,6 +20,8 @@ from apirest import views
 from rest_framework_jwt.views import obtain_jwt_token
 from rest_framework_jwt.views import refresh_jwt_token
 from rest_framework_jwt.views import verify_jwt_token
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,5 +30,5 @@ urlpatterns = [
     url(r'^db/nuevo-jwt', obtain_jwt_token),    
     url(r'^auth-jwt-refresh', refresh_jwt_token),
     url(r'^auth-jwt-verify', verify_jwt_token),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
