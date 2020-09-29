@@ -28,13 +28,10 @@ SECRET_KEY = 'qhgzdkqnyjqtxhf_i2flyuzvu4u0hv#-^*&(7ez1-^98w9(^kp'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://amstlabx.herokuapp.com', 'http://localhost:8000']
 
 CORS_ORIGIN_ALLOW_ALL = False
-CORS_ORIGIN_WHITELIST = ('http://localhost:8000')
-
-    # 'https://amstlabx.herokuapp.com'
-# )
+CORS_ORIGIN_WHITELIST = ('http://localhost:8000', 'https://amstlabx.herokuapp.com')
 # Application definition
 
 INSTALLED_APPS = [
@@ -47,6 +44,7 @@ INSTALLED_APPS = [
     'apirest',
     'rest_framework',
     'corsheaders',
+    'whitenoise.runserver_nostatic'
 ]
 
 MIDDLEWARE = [
@@ -58,7 +56,12 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
+
+STATICFILES_DIRS = [os.path.join(BASE_DIR,'djangolab/static')
+]
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 ROOT_URLCONF = 'djangolab.urls'
 
@@ -84,16 +87,16 @@ WSGI_APPLICATION = 'djangolab.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'amst-labx',
-        'USER': 'postgres',
-        'PASSWORD': 'admin',        
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'amst-labx',
+#         'USER': 'postgres',
+#         'PASSWORD': 'admin',        
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
 
 DATABASES = {}
 DATABASES['default'] = dj_database_url.config(conn_max_age=600)
