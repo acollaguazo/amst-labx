@@ -5,9 +5,11 @@ from rest_framework import status
 from apirest.models import Sensores
 from apirest.serializers import SensoresSerializer
 from rest_framework.decorators import api_view
+from rest_framework.permissions import AllowAny
 
 @api_view(['GET', 'POST', 'DELETE'])
 def sensor_data_list(request):
+    permission_classes = (AllowAny,)
     # GET list of sensor data, POST or DELETE all sensor data
     if request.method == 'GET':
         sensor_data = Sensores.objects.all()
@@ -28,6 +30,7 @@ def sensor_data_list(request):
  
 @api_view(['GET', 'PUT', 'DELETE'])
 def sensor_data_detail(request, pk):
+    permission_classes = (AllowAny,)
     try: 
         sensor_data = Sensores.objects.get(pk=pk) 
         if request.method == 'GET': 
@@ -50,6 +53,7 @@ def sensor_data_detail(request, pk):
 @api_view(['GET'])
 def sensor_data_list_published(request):
     # GET all published sensor_data
+    permission_classes = (AllowAny,)
     sensor_data = Sensores.objects.filter(published=True)
         
     if request.method == 'GET': 
