@@ -22,7 +22,7 @@ from rest_framework_jwt.views import refresh_jwt_token
 from rest_framework_jwt.views import verify_jwt_token
 
 urlpatterns = [
-    path('admin', admin.site.urls),
+    path('admin/', admin.site.urls),
     url(r'^api/sensores$', views.sensor_data_list),
     url(r'^api/sensores/(?P<pk>[0-9]+)$', views.sensor_data_detail),
     url(r'^db/nuevo-jwt', obtain_jwt_token),    
