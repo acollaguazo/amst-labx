@@ -31,9 +31,10 @@ DEBUG = False
 ALLOWED_HOSTS = []
 
 CORS_ORIGIN_ALLOW_ALL = False
-CORS_ORIGIN_WHITELIST = (
-    'http://localhost:8000', 'https://amstlabx.herokuapp.com'
-)
+CORS_ORIGIN_WHITELIST = ('http://localhost:8000')
+
+    # 'https://amstlabx.herokuapp.com'
+# )
 # Application definition
 
 INSTALLED_APPS = [
@@ -83,16 +84,16 @@ WSGI_APPLICATION = 'djangolab.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'amst-labx',
-#         'USER': 'postgres',
-#         'PASSWORD': 'admin',        
-#         'HOST': 'localhost',
-#         'PORT': '5432',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'amst-labx',
+        'USER': 'postgres',
+        'PASSWORD': 'admin',        
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
 
 DATABASES = {}
 DATABASES['default'] = dj_database_url.config(conn_max_age=600)
@@ -158,7 +159,7 @@ REST_FRAMEWORK = {
  
 # }
 
-# JWT_AUTH = { 
-#     'JWT_AUTH_HEADER_PREFIX': 'JWT',
-#     'JWT_EXPIRATION_DELTA': datetime.timedelta(seconds=300)
-# }
+JWT_AUTH = { 
+    'JWT_AUTH_HEADER_PREFIX': 'JWT',
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(seconds=300)
+}

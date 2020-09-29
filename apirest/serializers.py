@@ -7,8 +7,5 @@ class SensoresSerializer(serializers.ModelSerializer):
  
     class Meta:
         model = Sensores
-        fields = ('id',
-                 'temperatura',
-                 'humedad',
-                 'peso')
+        fields = ('id', 'temperatura', 'humedad', 'peso')
 
