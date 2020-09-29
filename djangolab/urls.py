@@ -17,7 +17,6 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path
 from apirest import views
-# from rest_framework_simplejwt import views as jwt_views
 from rest_framework_jwt.views import obtain_jwt_token
 from rest_framework_jwt.views import refresh_jwt_token
 from rest_framework_jwt.views import verify_jwt_token
@@ -27,8 +26,6 @@ urlpatterns = [
     url(r'^api/sensores$', views.sensor_data_list),
     url(r'^api/sensores/(?P<pk>[0-9]+)$', views.sensor_data_detail),
     url(r'^api/sensores/published$', views.sensor_data_list_published),
-    # path('api/token', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    # path('api/token/refresh', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
     url(r'^auth-jwt/', obtain_jwt_token),    
     url(r'^auth-jwt-refresh/', refresh_jwt_token),
     url(r'^auth-jwt-verify/', verify_jwt_token),

@@ -9,7 +9,7 @@ from rest_framework.permissions import AllowAny
 from rest_framework.permissions import IsAuthenticated
 
 @api_view(['GET', 'POST', 'DELETE'])
-@permission_classes([AllowAny])
+@permission_classes([AllowAny, IsAuthenticated])
 def sensor_data_list(request):
     # GET list of sensor data, POST or DELETE all sensor data
     if request.method == 'GET':
