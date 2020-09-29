@@ -6,10 +6,9 @@ from apirest.models import Sensores
 from apirest.serializers import SensoresSerializer
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
-from rest_framework.permissions import IsAuthenticated
 
 @api_view(['GET', 'POST', 'DELETE'])
-@permission_classes([AllowAny, IsAuthenticated])
+@permission_classes([AllowAny])
 def sensor_data_list(request):
     # GET list of sensor data, POST or DELETE all sensor data
     if request.method == 'GET':
@@ -30,7 +29,7 @@ def sensor_data_list(request):
         '{} sensor data were deleted successfully!'.format(count[0])}, status=status.HTTP_204_NO_CONTENT)
  
 @api_view(['GET', 'PUT', 'DELETE'])
-@permission_classes([AllowAny, IsAuthenticated])
+@permission_classes([AllowAny])
 def sensor_data_detail(request, pk):
     try: 
         sensor_data = Sensores.objects.get(pk=pk) 
