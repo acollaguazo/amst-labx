@@ -28,7 +28,7 @@ SECRET_KEY = 'qhgzdkqnyjqtxhf_i2flyuzvu4u0hv#-^*&(7ez1-^98w9(^kp'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['amstlabx.herokuapp.com','https://amstlabx.herokuapp.com']
 
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = ('http://localhost:8000', 'https://amstlabx.herokuapp.com')
