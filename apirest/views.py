@@ -9,7 +9,7 @@ from rest_framework.permissions import AllowAny
 from rest_framework.permissions import IsAuthenticated
 
 @api_view(['GET', 'POST', 'DELETE'])
-@permission_classes([AllowAny, IsAuthenticated])
+@permission_classes([AllowAny])
 def sensor_data_list(request):
     # GET list of sensor data, POST or DELETE all sensor data
     if request.method == 'GET':
@@ -30,8 +30,8 @@ def sensor_data_list(request):
         '{} sensor data were deleted successfully!'.format(count[0])}, status=status.HTTP_204_NO_CONTENT)
  
 @api_view(['GET', 'PUT', 'DELETE'])
+@permission_classes([AllowAny])
 def sensor_data_detail(request, pk):
-    permission_classes = (AllowAny,)
     try: 
         sensor_data = Sensores.objects.get(pk=pk) 
         if request.method == 'GET': 
@@ -52,6 +52,7 @@ def sensor_data_detail(request, pk):
     
         
 @api_view(['GET'])
+@permission_classes([AllowAny])
 def sensor_data_list_published(request):
     # GET all published sensor_data
     permission_classes = (AllowAny,)
