@@ -4,15 +4,13 @@ from rest_framework.parsers import JSONParser
 from rest_framework import status
 from apirest.models import Sensores
 from apirest.serializers import SensoresSerializer
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
 from rest_framework.permissions import IsAuthenticated
 
 @api_view(['GET', 'POST', 'DELETE'])
+@permission_classes([AllowAny, IsAuthenticated])
 def sensor_data_list(request):
-
-    permission_classes = (AllowAny,)
-    permission_classes = (IsAuthenticated,)
     # GET list of sensor data, POST or DELETE all sensor data
     if request.method == 'GET':
         sensor_data = Sensores.objects.all()
