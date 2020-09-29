@@ -30,7 +30,7 @@ def sensor_data_list(request):
         '{} sensor data were deleted successfully!'.format(count[0])}, status=status.HTTP_204_NO_CONTENT)
  
 @api_view(['GET', 'PUT', 'DELETE'])
-@permission_classes([AllowAny])
+@permission_classes([AllowAny, IsAuthenticated])
 def sensor_data_detail(request, pk):
     try: 
         sensor_data = Sensores.objects.get(pk=pk) 
