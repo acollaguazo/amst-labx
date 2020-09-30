@@ -30,5 +30,6 @@ urlpatterns = [
     url(r'^db/nuevo-jwt', obtain_jwt_token),    
     url(r'^auth-jwt-refresh', refresh_jwt_token),
     url(r'^auth-jwt-verify', verify_jwt_token),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+] 
+# + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
