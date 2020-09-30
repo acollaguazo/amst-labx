@@ -8,7 +8,7 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
 
 
-@api_view(['GET', 'POST', 'DELETE'])
+@api_view(['GET', 'POST'])
 @permission_classes([AllowAny])
 def sensor_data_list(request):
     if request.method == 'GET':
@@ -22,10 +22,6 @@ def sensor_data_list(request):
             sensor_data_serializer.save()
             return JsonResponse(sensor_data_serializer.data, status=status.HTTP_201_CREATED) 
         return JsonResponse(sensor_data_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    elif request.method == 'DELETE':
-        count = Sensores.objects.all().delete()
-        return JsonResponse({'message': 
-        '{} sensor data were deleted successfully!'.format(count[0])}, status=status.HTTP_204_NO_CONTENT)
 
 
 @api_view(['GET', 'PUT', 'DELETE'])
@@ -48,4 +44,3 @@ def sensor_data_detail(request, pk):
             return JsonResponse({'message': 'sensor data was deleted successfully!'}, status=status.HTTP_204_NO_CONTENT)
     except Sensores.DoesNotExist: 
         return JsonResponse({'message': 'The sensor data does not exist'}, status=status.HTTP_404_NOT_FOUND) 
-        
