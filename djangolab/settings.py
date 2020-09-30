@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'apirest',
     'rest_framework',
     'corsheaders',
-    # 'whitenoise.runserver_nostatic'
+    'whitenoise.runserver_nostatic'
 ]
 
 MIDDLEWARE = [
