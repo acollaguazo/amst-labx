@@ -9,7 +9,7 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 
 
 @api_view(['GET', 'POST'])
-@permission_classes([AllowAny])
+@permission_classes([AllowAny, IsAuthenticated])
 def sensor_data_list(request):
     if request.method == 'GET':
         sensor_data = Sensores.objects.all()
@@ -25,7 +25,7 @@ def sensor_data_list(request):
 
 
 @api_view(['GET', 'PUT', 'DELETE'])
-@permission_classes([AllowAny])
+@permission_classes([AllowAny, IsAuthenticated])
 def sensor_data_detail(request, pk):
     try: 
         sensor_data = Sensores.objects.get(pk=pk) 
@@ -41,6 +41,6 @@ def sensor_data_detail(request, pk):
             return JsonResponse(sensor_data_serializer.errors, status=status.HTTP_400_BAD_REQUEST) 
         elif request.method == 'DELETE': 
             sensor_data.delete() 
-            return JsonResponse({'message': 'sensor data was deleted successfully!'}, status=status.HTTP_204_NO_CONTENT)
+            return JsonResponse({'message': 'sensor data was deleted successfully!'}, status=status.HTTP_200_OK)
     except Sensores.DoesNotExist: 
         return JsonResponse({'message': 'The sensor data does not exist'}, status=status.HTTP_404_NOT_FOUND) 
