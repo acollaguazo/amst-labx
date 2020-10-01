@@ -5,11 +5,11 @@ from rest_framework import status
 from apirest.models import Sensores
 from apirest.serializers import SensoresSerializer
 from rest_framework.decorators import api_view, permission_classes
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAuthenticated
 
 
 @api_view(['GET', 'POST'])
-@permission_classes([AllowAny])
+@permission_classes([AllowAny, IsAuthenticated])
 def sensor_data_list(request):
     if request.method == 'GET':
         sensor_data = Sensores.objects.all()
@@ -25,7 +25,7 @@ def sensor_data_list(request):
 
 
 @api_view(['GET', 'PUT', 'DELETE'])
-@permission_classes([AllowAny])
+@permission_classes([AllowAny, IsAuthenticated])
 def sensor_data_detail(request, pk):
     try: 
         sensor_data = Sensores.objects.get(pk=pk) 
