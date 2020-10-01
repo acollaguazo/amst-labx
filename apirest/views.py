@@ -9,7 +9,7 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 
 
 @api_view(['GET', 'POST'])
-@permission_classes([AllowAny, IsAuthenticated])
+@permission_classes([AllowAny])
 def sensor_data_list(request):
     if request.method == 'GET':
         sensor_data = Sensores.objects.all()
@@ -25,7 +25,7 @@ def sensor_data_list(request):
 
 
 @api_view(['GET', 'PUT', 'DELETE'])
-@permission_classes([AllowAny, IsAuthenticated])
+@permission_classes([AllowAny])
 def sensor_data_detail(request, pk):
     try: 
         sensor_data = Sensores.objects.get(pk=pk) 
