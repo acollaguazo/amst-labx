@@ -28,7 +28,15 @@ SECRET_KEY = 'qhgzdkqnyjqtxhf_i2flyuzvu4u0hv#-^*&(7ez1-^98w9(^kp'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['amstlabx.herokuapp.com']
+ALLOWED_HOSTS = [
+    'amst-labx.onrender.com',
+    '44.226.145.213',
+    '54.187.200.255',
+    '34.213.214.55',
+    '35.164.95.156',
+    '44.230.95.183',
+    '44.229.200.200',
+]
 
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = ('http://localhost:8000', 'https://amstlabx.herokuapp.com')
@@ -83,19 +91,12 @@ WSGI_APPLICATION = 'djangolab.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'amst-labx',
-#         'USER': 'postgres',
-#         'PASSWORD': 'admin',        
-#         'HOST': 'localhost',
-#         'PORT': '5432',
-#     }
-# }
-
-DATABASES = {}
-DATABASES['default'] = dj_database_url.config(conn_max_age=600)
+DATABASES = {
+    'default': dj_database_url.parse(
+        os.getenv('DATABASE_URL'),  # viene completa con usuario + password
+        conn_max_age=600
+    )
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
